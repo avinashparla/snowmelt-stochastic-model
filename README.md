@@ -1,17 +1,40 @@
-# Stochastic Snowmelt Modeling (Chandra Basin)
+# Stochastic Snowmelt Modeling Framework
 
-This project implements a stochastic extension of temperature-index snowmelt models using ERA5 and MODIS data.
+This repository contains code and data supporting the study:
+
+**"A Stochastic Extension of Temperature-Index Snowmelt Modeling for Probabilistic Runoff Estimation in a Himalayan Basin"**
+
+## Overview
+
+This study develops a stochastic extension of the classical temperature-index (degree-day) snowmelt model by incorporating:
+
+- State-dependent variability
+- Autoregressive (AR1) temporal persistence
+- Temperature-triggered jump processes
+- Monte Carlo simulation for uncertainty quantification
 
 ## Structure
-- data/: raw and processed datasets
-- src/: model code
-- scripts/: data download and preprocessing
-- notebooks/: exploration
-- outputs/: figures and results
-- paper/: LaTeX manuscript
 
-## Study Area
-Chandra Basin, Western Himalayas
+- `data/processed/` → Basin-averaged temperature and model outputs  
+- `notebooks/` → Full modeling workflow  
+- `outputs/figures/` → Figures used in the paper  
+- `outputs/tables/` → Statistical summaries  
+- `paper/` → LaTeX manuscript  
 
-## Time Period
-2018–2022
+## Reproducibility
+
+Run notebooks in order:
+
+1. `01_preprocessing.ipynb`
+2. `02_modeling.ipynb`
+3. `03_monte_carlo.ipynb`
+4. `04_results_figures.ipynb`
+
+## Data Sources
+
+- ERA5 Reanalysis (ECMWF)
+- SRTM DEM (NASA)
+
+## License
+
+MIT License
