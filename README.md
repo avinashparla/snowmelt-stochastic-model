@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Stochastic Snowmelt Modeling Framework
 
 This repository contains code and data supporting the study:
@@ -38,3 +39,7 @@ Run notebooks in order:
 ## License
 
 MIT License
+=======
+# snowmelt-stochastic-model
+Stochastic snowmelt modeling framework for probabilistic runoff estimation in a Himalayan basin
+>>>>>>> 1954a09786502394cdd90c6b5925d6683fcbee06

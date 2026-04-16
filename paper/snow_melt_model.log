@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.7)  15 APR 2026 23:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.7)  16 APR 2026 16:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -178,42 +178,76 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 
 (C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
 
+(C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
+(C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count303
+)
+\MT@toks=\toks24
+\MT@tempbox=\box55
+\MT@count=\count304
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
+LaTeX Info: Redefining \leftprotrusion on input line 1085.
+\MT@prot@toks=\toks25
+LaTeX Info: Redefining \rightprotrusion on input line 1104.
+LaTeX Info: Redefining \textls on input line 1449.
+\MT@outer@kern=\dimen181
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
+\MT@listname@count=\count305
+
+(C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdf
+tex.def
+File: microtype-pdftex.def 2026/03/01 v3.2d Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 944.
+LaTeX Info: Redefining \lslig on input line 944.
+\MT@outer@space=\skip56
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
+File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
+)
+LaTeX Info: Redefining \microtypesetup on input line 3065.
+)
 (C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count303
+\l__color_backend_stack_int=\count306
 ) (snow_melt_model.aux)
 \openout1 = `snow_melt_model.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 
 (C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count304
-\scratchdimen=\dimen181
-\scratchbox=\box55
-\nofMPsegments=\count305
-\nofMParguments=\count306
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count307
-\MPscratchDim=\dimen182
-\MPnumerator=\count308
-\makeMPintoPDFobject=\count309
-\everyMPtoPDFconversion=\toks25
+\scratchcounter=\count307
+\scratchdimen=\dimen182
+\scratchbox=\box56
+\nofMPsegments=\count308
+\nofMParguments=\count309
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count310
+\MPscratchDim=\dimen183
+\MPnumerator=\count311
+\makeMPintoPDFobject=\count312
+\everyMPtoPDFconversion=\toks27
 )
 (C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -259,81 +293,110 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
+LaTeX Info: Redefining \microtypecontext on input line 24.
+Package microtype Info: Applying patch `item' on input line 24.
+Package microtype Info: Applying patch `toc' on input line 24.
+Package microtype Info: Applying patch `eqnum' on input line 24.
+Package microtype Info: Applying patch `footnote' on input line 24.
+Package microtype Info: Applying patch `verbatim' on input line 24.
+LaTeX Info: Redefining \microtypesetup on input line 24.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+Package microtype Info: Patching command `\showhyphens'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+(C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
+
 
 (C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
+(C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
 
 
 (C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+(C:\Users\parla\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
 [1
 
 {C:/Users/parla/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-<../outputs/figures/figure_study_area_final.png, id=13, 487.3407pt x 364.9635pt
+<../outputs/figures/figure_study_area_final.png, id=15, 487.3407pt x 364.9635pt
 >
 File: ../outputs/figures/figure_study_area_final.png Graphic file (type png)
 <use ../outputs/figures/figure_study_area_final.png>
 Package pdftex.def Info: ../outputs/figures/figure_study_area_final.png  used o
-n input line 75.
+n input line 70.
 (pdftex.def)             Requested size: 352.31625pt x 263.85944pt.
 
-[3 <../outputs/figures/figure_study_area_final.png>] [4] [5]
-Overfull \hbox (0.57845pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10.95 Temporal per-sis-tence in snowmelt vari-abil-ity is rep-re-s
-ented us-ing a first-order au-tore-gres-sive [AR(1)]
- []
-
-[6]
-Overfull \hbox (3.16089pt too wide) in paragraph at lines 223--224
-[]\OT1/cmr/m/n/10.95 While sim-pli-fied, this ap-proach en-ables con-sis-tent c
-om-par-i-son be-tween de-ter-min-is-tic and stochas-
- []
-
-[7]
-<../outputs/figures/figure_model_comparison.png, id=39, 722.7pt x 361.35pt>
+[3 <../outputs/figures/figure_study_area_final.png>] [4] [5] [6] [7] [8]
+[9]
+<../outputs/figures/figure_model_comparison.png, id=45, 867.24pt x 722.7pt>
 File: ../outputs/figures/figure_model_comparison.png Graphic file (type png)
 <use ../outputs/figures/figure_model_comparison.png>
 Package pdftex.def Info: ../outputs/figures/figure_model_comparison.png  used o
-n input line 260.
-(pdftex.def)             Requested size: 399.29463pt x 199.64737pt.
-<../outputs/figures/figure_1_uncertainty.png, id=40, 722.7pt x 361.35pt>
+n input line 311.
+(pdftex.def)             Requested size: 399.29463pt x 332.74377pt.
+<../outputs/figures/figure_1_uncertainty.png, id=46, 867.24pt x 578.16pt>
 File: ../outputs/figures/figure_1_uncertainty.png Graphic file (type png)
 <use ../outputs/figures/figure_1_uncertainty.png>
 Package pdftex.def Info: ../outputs/figures/figure_1_uncertainty.png  used on i
-nput line 275.
-(pdftex.def)             Requested size: 399.29463pt x 199.64737pt.
- [8 <../outputs/figures/figure_model_comparison.png>]
-<../outputs/figures/figure_2_distribution.png, id=45, 504.4446pt x 333.4056pt>
+nput line 322.
+(pdftex.def)             Requested size: 399.29463pt x 266.19502pt.
+<../outputs/figures/figure_2_distribution.png, id=47, 504.4446pt x 333.4056pt>
 File: ../outputs/figures/figure_2_distribution.png Graphic file (type png)
 <use ../outputs/figures/figure_2_distribution.png>
 Package pdftex.def Info: ../outputs/figures/figure_2_distribution.png  used on 
-input line 290.
+input line 331.
 (pdftex.def)             Requested size: 352.31625pt x 232.85832pt.
- [9 <../outputs/figures/figure_1_uncertainty.png>] [10 <../outputs/figures/figu
-re_2_distribution.png>] [11]
-Overfull \hbox (16.42267pt too wide) in paragraph at lines 384--385
-[]\OT1/cmr/m/n/10.95 The stochas-tic for-mu-la-tion pre-serves the sim-plic-ity
- and com-pu-ta-tional ef-fi-ciency of the temperature-
- []
+ [10 <../outputs/figures/figure_model_comparison.png>] [11 <../outputs/figures/
+figure_1_uncertainty.png> <../outputs/figures/figure_2_distribution.png>]
+<../outputs/figures/figure_sensitivity.png, id=57, 867.24pt x 578.16pt>
+File: ../outputs/figures/figure_sensitivity.png Graphic file (type png)
+<use ../outputs/figures/figure_sensitivity.png>
+Package pdftex.def Info: ../outputs/figures/figure_sensitivity.png  used on inp
+ut line 384.
+(pdftex.def)             Requested size: 469.75502pt x 313.17216pt.
 
-[12] (snow_melt_model.bbl [13]) [14] (snow_melt_model.aux)
+[12] [13 <../outputs/figures/figure_sensitivity.png>]
+<../outputs/figures/figure_validation_panels_final.png, id=66, 867.24pt x 722.7
+pt>
+File: ../outputs/figures/figure_validation_panels_final.png Graphic file (type 
+png)
+<use ../outputs/figures/figure_validation_panels_final.png>
+Package pdftex.def Info: ../outputs/figures/figure_validation_panels_final.png 
+ used on input line 399.
+(pdftex.def)             Requested size: 469.75502pt x 391.46521pt.
+ [14 <../outputs/figures/figure_validation_panels_final.png>] [15] [16] (snow_m
+elt_model.bbl [17])
+[18] (snow_melt_model.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3647 strings out of 467867
- 54682 string characters out of 5418335
- 467374 words of memory out of 5000000
- 32508 multiletter control sequences out of 15000+600000
- 636428 words of font info for 72 fonts, out of 8000000 for 9000
+ 6163 strings out of 467867
+ 95801 string characters out of 5418335
+ 548244 words of memory out of 5000000
+ 34840 multiletter control sequences out of 15000+600000
+ 642771 words of font info for 160 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,9n,65p,913b,273s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,9n,65p,1014b,267s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\parla\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1095.pk><C:/Users/parla/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx10.pfb><C:/Users/parla/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -348,10 +411,11 @@ arla/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:
 pfb><C:/Users/parla/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb><C:/Users/parla/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmsy8.pfb><C:/Users/parla/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmti10.pfb>
-Output written on snow_melt_model.pdf (14 pages, 2699228 bytes).
+public/amsfonts/cm/cmti10.pfb><C:/Users/parla/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on snow_melt_model.pdf (18 pages, 4643613 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
+ 143 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31263 words of extra memory for PDF output out of 35830 (max. 10000000)
 

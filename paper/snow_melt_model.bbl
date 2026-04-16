@@ -1,99 +1,113 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Barnett(2005)]{Barnett2005}
-Tim P. et~al. Barnett.
+\bibitem[Barnett et~al.(2005)Barnett, Adam, and Lettenmaier]{Barnett2005}
+T.~P. Barnett, J.~C. Adam, and D.~P. Lettenmaier.
 \newblock Potential impacts of a warming climate on water availability.
 \newblock \emph{Nature}, 438:\penalty0 303--309, 2005.
 
 \bibitem[Bergstr\"om(1976)]{Bergstrom1976}
-Sten Bergstr\"om.
+S.~Bergstr\"om.
 \newblock Development and application of a conceptual runoff model.
 \newblock \emph{SMHI Reports}, 1976.
 
 \bibitem[Beven(2001)]{Beven2001}
-Keith Beven.
+K.~Beven.
 \newblock \emph{Rainfall-Runoff Modelling: The Primer}.
 \newblock Wiley, 2001.
 
 \bibitem[Bookhagen and Burbank(2010)]{Bookhagen2010}
-B.~Bookhagen and D.~Burbank.
-\newblock Toward a complete himalayan hydrological budget.
+B.~Bookhagen and D.~W. Burbank.
+\newblock Toward a complete {Himalayan} hydrological budget.
 \newblock \emph{Geophysical Research Letters}, 37, 2010.
 
 \bibitem[Dozier(2011)]{Dozier2011}
-Jeff Dozier.
+J.~Dozier.
 \newblock Mountain hydrology, snow color, and the fourth paradigm.
 \newblock \emph{Annual Review of Earth and Planetary Sciences}, 39:\penalty0
   243--269, 2011.
 
-\bibitem[Essery(2013)]{Essery2013}
-Richard et~al. Essery.
+\bibitem[Essery et~al.(2013)]{Essery2013}
+R.~Essery et~al.
 \newblock Snow model intercomparison.
 \newblock \emph{The Cryosphere}, 7:\penalty0 217--235, 2013.
 
-\bibitem[Farr(2007)]{Farr2007}
-Tom G. et~al. Farr.
+\bibitem[Farr et~al.(2007)]{Farr2007}
+T.~G. Farr et~al.
 \newblock The shuttle radar topography mission.
 \newblock \emph{Reviews of Geophysics}, 45, 2007.
 
-\bibitem[Hersbach(2020)]{Hersbach2020}
-Hans et~al. Hersbach.
-\newblock The era5 global reanalysis.
+\bibitem[Hall and Riggs(2019)]{hall2019}
+D.~K. Hall and G.~A. Riggs.
+\newblock {MODIS}/terra snow cover daily l3 global 500m sin grid, version 6,
+  2019.
+\newblock NASA NSIDC Distributed Active Archive Center.
+
+\bibitem[Hall et~al.(2002)Hall, Riggs, Salomonson, DiGirolamo, and
+  Bayr]{Hall2002}
+D.~K. Hall, G.~A. Riggs, V.~V. Salomonson, N.~E. DiGirolamo, and K.~J. Bayr.
+\newblock {MODIS} snow-cover products.
+\newblock \emph{Remote Sensing of Environment}, 83\penalty0 (1-2):\penalty0
+  181--194, 2002.
+\newblock \doi{10.1016/S0034-4257(02)00095-0}.
+
+\bibitem[Hersbach et~al.(2020)]{Hersbach2020}
+H.~Hersbach et~al.
+\newblock The {ERA5} global reanalysis.
 \newblock \emph{Quarterly Journal of the Royal Meteorological Society},
   146:\penalty0 1999--2049, 2020.
 
 \bibitem[Hock(2003)]{Hock2003}
-Regine Hock.
+R.~Hock.
 \newblock Temperature index melt modelling in mountain areas.
 \newblock \emph{Journal of Hydrology}, 282:\penalty0 104--115, 2003.
 
-\bibitem[Immerzeel(2010)]{Immerzeel2010}
-Walter W. et~al. Immerzeel.
+\bibitem[Immerzeel et~al.(2010)]{Immerzeel2010}
+W.~W. Immerzeel et~al.
 \newblock Climate change will affect the asian water towers.
 \newblock \emph{Science}, 328:\penalty0 1382--1385, 2010.
 
 \bibitem[Koutsoyiannis(2003)]{Koutsoyiannis2003}
-Demetris Koutsoyiannis.
+D.~Koutsoyiannis.
 \newblock Climate, climate change, and hydrological uncertainty.
 \newblock \emph{Hydrological Sciences Journal}, 48:\penalty0 3--24, 2003.
 
-\bibitem[Lindstr\"om(1997)]{Lindstrom1997}
-G.~et~al. Lindstr\"om.
-\newblock Development and test of the hbv model.
+\bibitem[Lindstr\"om et~al.(1997)]{Lindstrom1997}
+G.~Lindstr\"om et~al.
+\newblock Development and test of the {HBV} model.
 \newblock \emph{Journal of Hydrology}, 201:\penalty0 272--288, 1997.
 
-\bibitem[Marks(1999)]{Marks1999}
-Danny et~al. Marks.
+\bibitem[Marks et~al.(1999)Marks, Dozier, et~al.]{Marks1999}
+D.~Marks, J.~Dozier, et~al.
 \newblock A spatially distributed energy balance snowmelt model.
 \newblock \emph{Hydrological Processes}, 13:\penalty0 1935--1959, 1999.
 
-\bibitem[Martinec(2008)]{Martinec2008}
-Josef et~al. Martinec.
+\bibitem[Martinec et~al.(2008)Martinec, Rango, and Roberts]{Martinec2008}
+J.~Martinec, A.~Rango, and R.~Roberts.
 \newblock \emph{Snowmelt Runoff Model (SRM)}.
 \newblock Springer, 2008.
 
 \bibitem[Montanari(2007)]{Montanari2007}
-Alberto Montanari.
+A.~Montanari.
 \newblock What do we mean by uncertainty in hydrology?
 \newblock \emph{Hydrological Processes}, 21:\penalty0 841--845, 2007.
 
 \bibitem[Ohmura(2001)]{Ohmura2001}
-Atsumu Ohmura.
+A.~Ohmura.
 \newblock Physical basis for the temperature-based melt-index method.
 \newblock \emph{Journal of Applied Meteorology}, 40:\penalty0 753--761, 2001.
 
 \bibitem[Rango and Martinec(1995)]{Rango1995}
-Albert Rango and Josef Martinec.
+A.~Rango and J.~Martinec.
 \newblock Revisiting the degree-day method.
 \newblock \emph{Water Resources Bulletin}, 31:\penalty0 657--669, 1995.
 
 \bibitem[Robert and Casella(2004)]{Robert2004}
-Christian Robert and George Casella.
+C.~P. Robert and G.~Casella.
 \newblock \emph{Monte Carlo Statistical Methods}.
 \newblock Springer, 2004.
 

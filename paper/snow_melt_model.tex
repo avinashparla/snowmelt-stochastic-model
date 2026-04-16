@@ -8,14 +8,17 @@
 \usepackage{booktabs}
 \usepackage{natbib}
 \usepackage{geometry}
+\usepackage{microtype}
+\setlength{\emergencystretch}{3em}
+\sloppy
 \geometry{margin=1in}
 
 
 % =========================
 % TITLE
 % =========================
-\title{A Stochastic Extension of Temperature-Index Snowmelt Modeling for Probabilistic Runoff Estimation in a Himalayan Basin}
-\author{Avinash Parla}
+\title{A Stochastic Temperature-Index Snowmelt Model for Probabilistic Runoff Estimation in a Himalayan Basin}
+\author{Avinash Parla \\ Independent Researcher}
 \date{}
 
 \begin{document}
@@ -24,16 +27,18 @@
 	
 	% =========================
 \begin{abstract}
-	Snowmelt-driven hydrological systems in high mountain regions exhibit significant variability due to complex terrain, spatial heterogeneity, and sensitivity to temperature fluctuations. Traditional temperature-index snowmelt models provide deterministic estimates that fail to capture intrinsic variability and extreme melt events.
+	Snowmelt-driven hydrological systems in high-mountain regions exhibit substantial variability due to complex terrain, spatial heterogeneity, and strong sensitivity to temperature. Conventional temperature-index models provide deterministic estimates that do not adequately capture this variability or the occurrence of extreme melt events.
 	
-	In this study, we develop a stochastic extension of the classical temperature-index model by incorporating state-dependent variability, temporal persistence through an autoregressive process, and temperature-triggered jump dynamics. The framework is applied to the Chandra Basin in the western Himalayas using ERA5 reanalysis temperature data and DEM-derived basin representation.
+	This study proposes a stochastic extension of the temperature-index snowmelt model that integrates state-dependent variability, autoregressive temporal persistence, and temperature-triggered jump processes. The framework is applied to the Chandra Basin in the western Himalayas using ERA5 reanalysis temperature data, SRTM-derived basin representation, and MODIS satellite-derived snow cover for independent validation.
 	
-	Monte Carlo simulations are used to generate probabilistic estimates of snowmelt and runoff. Results show that while mean melt behavior remains consistent with deterministic estimates, stochastic formulations significantly enhance variability and produce heavy-tailed distributions, indicating increased likelihood of extreme melt events.
+	Monte Carlo simulations are employed to generate probabilistic estimates of snowmelt and runoff. Results show that while mean melt behavior remains consistent with deterministic estimates, stochastic formulations significantly enhance variability and produce heavy-tailed distributions, indicating an increased likelihood of extreme melt events. Sensitivity experiments further demonstrate that increasing persistence strengthens temporal memory, while higher jump probability increases the frequency and magnitude of extreme melt events without altering the overall seasonal structure.
 	
-	The proposed approach provides a computationally efficient pathway for transitioning from deterministic snowmelt estimation to probabilistic hydrological analysis, with implications for risk assessment, water resource management, and climate change studies in snow-dominated regions.
+	Validation against MODIS snow cover reveals that the deterministic model best captures seasonal timing (correlation $r = -0.698$), whereas stochastic models improve representation of melt magnitude and variability, achieving lower root mean square error (RMSE).
+	
+	The proposed framework provides a computationally efficient pathway for transitioning from deterministic snowmelt estimation to probabilistic hydrological modeling, with important implications for risk assessment, water resource management, and climate impact studies in snow-dominated regions.
 \end{abstract}
 
-\textbf{Keywords:} Snowmelt modeling, Temperature-index model, Stochastic processes, Monte Carlo simulation, Himalayan hydrology, Runoff uncertainty
+\textbf{Keywords:} Snowmelt, Temperature-index model, Stochastic hydrology, Monte Carlo simulation, Uncertainty quantification, Himalayan basins
 	% =========================
 \section{Introduction}
 
@@ -51,12 +56,21 @@ In this study, we propose a stochastic extension of the classical temperature-in
 
 The framework is applied to the Chandra Basin in the western Himalayas, a high-altitude, snow-dominated catchment where melt processes strongly influence seasonal hydrology. Using reanalysis-based temperature data and DEM-derived basin representation, the study aims to (i) implement a baseline deterministic snowmelt model, (ii) develop a stochastic formulation that captures condition-dependent variability, and (iii) quantify uncertainty in melt and runoff using Monte Carlo simulation.
 
-By integrating deterministic modeling with internally generated stochastic variability, this work provides a pathway for transitioning from traditional snowmelt estimation toward probabilistic characterization of melt and runoff processes. Such an approach is particularly relevant for high mountain regions, where variability and extremes play a critical role in hydrological response and water resource management.
+By integrating deterministic modeling with internally generated stochastic variability, this work provides a pathway for transitioning from traditional snowmelt estimation toward probabilistic characterization of melt and runoff processes. Such an approach is particularly relevant for high-mountain regions, where variability and extremes play a critical role in hydrological response and water resource management. 
+
+Unlike conventional approaches that introduce uncertainty externally through input perturbations or parameter ensembles, this study embeds stochastic variability directly within the snowmelt formulation, enabling intrinsic representation of process-level uncertainty and improving representation of variability and extremes.
 	
 	% =========================
 \section{Study Area}
 
 The study is conducted in the Chandra Basin, located in the western Himalayas within the Lahaul--Spiti region of Himachal Pradesh, India. The basin forms the upper catchment of the Chandra River, which originates from glaciated terrain near the Bara Shigri Glacier and later joins the Bhaga River to form the Chenab River system.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.75\textwidth]{../outputs/figures/figure_study_area_final.png}
+	\caption{Topographic map of the Chandra Basin in the western Himalayas derived from SRTM DEM. Elevation is shown in meters above sea level with hillshade applied to enhance terrain features. The delineated basin boundary is overlaid in black, along with a north arrow and scale bar for spatial reference.}
+	\label{fig:study_area}
+\end{figure}
 
 The basin is characterized by high-altitude mountainous terrain, with elevations ranging from approximately 3,000~m to over 6,000~m above sea level. This strong elevation gradient results in significant spatial variability in temperature, snow accumulation, and melt processes. The region experiences cold winters dominated by snowfall associated with western disturbances, leading to seasonal snowpack development.
 
@@ -70,12 +84,7 @@ For the purposes of this study, the basin is represented at an aggregated scale 
 
 A digital elevation model (DEM) derived from Shuttle Radar Topography Mission (SRTM) data was used for basin delineation and terrain analysis. The DEM provides sufficient spatial resolution to capture key geomorphological features influencing snow accumulation and melt processes. The spatial extent, elevation distribution, and terrain characteristics of the basin are shown in Figure~\ref{fig:study_area}.
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.75\textwidth]{../outputs/figures/figure_study_area_final.png}
-	\caption{Topographic map of the Chandra Basin in the western Himalayas derived from SRTM DEM. Elevation is shown in meters above sea level with hillshade applied to enhance terrain features. The delineated basin boundary is overlaid in black, along with a north arrow and scale bar for spatial reference.}
-	\label{fig:study_area}
-\end{figure}
+
 	
 	% =========================
 \section{Data}
@@ -97,6 +106,14 @@ Topographic characteristics of the basin are derived from the Shuttle Radar Topo
 The delineation process involves hydrological conditioning of the DEM, including flow direction and flow accumulation analysis, followed by identification of the basin outlet and upstream contributing area. The resulting basin mask is then reprojected to match the coordinate system of the ERA5 dataset.
 
 This mask is used to spatially aggregate meteorological variables, ensuring that all forcing data correspond strictly to the hydrological extent of the basin.
+
+\subsection{Satellite-Derived Snow Cover Data}
+
+Satellite-based snow cover observations are obtained from the Moderate Resolution Imaging Spectroradiometer (MODIS) daily snow product (MOD10A1, Collection 6.1) \citep{Hall2002}. This dataset provides global snow cover information at a spatial resolution of approximately 500~m. MODIS snow products have been widely used for large-scale snow cover monitoring due to their consistent temporal coverage and validated retrieval algorithms \citep{hall2019}.
+
+For this study, MODIS snow cover data were accessed via Google Earth Engine and processed to extract basin-averaged snow fraction time series over the Chandra Basin. Pixels with valid Normalized Difference Snow Index (NDSI) values were retained, and quality-controlled observations were used to compute basin-averaged snow fraction time series.
+
+Due to cloud contamination and classification uncertainty inherent in optical remote sensing, the MODIS dataset is not directly assimilated into the model, but used exclusively for independent validation of modeled snowmelt dynamics. To ensure temporal consistency, missing observations due to cloud contamination were implicitly handled through temporal smoothing, and the resulting snow fraction time series was used exclusively for validation purposes. The MODIS-derived snow fraction provides an independent observational constraint on snow depletion dynamics, enabling indirect validation of modeled melt processes.
 
 \subsection{Data Processing and Basin Averaging}
 
@@ -210,6 +227,23 @@ The present study addresses this gap by extending the classical temperature-inde
 		\epsilon_t = \phi \, \epsilon_{t-1} + \eta_t + J_t
 	\end{equation}
 	
+	\subsection{Parameter Selection and Sensitivity}
+	
+	The stochastic snowmelt model introduces several parameters that govern variability, persistence, and extreme event behavior. These include the autoregressive persistence coefficient ($\phi$), the state-dependent variability parameters ($a$, $b$), the probability of temperature-triggered jumps ($p$), and the critical temperature threshold ($T_c$).
+	
+	Parameter values are selected based on physical reasoning and exploratory analysis. The persistence parameter $\phi$ controls the memory of the stochastic process and is chosen within the range $0 < \phi < 1$ to ensure stability while capturing temporal correlation in melt variability. Higher values of $\phi$ produce smoother time series with stronger persistence, whereas lower values result in more rapidly fluctuating melt behavior.
+	
+	The variability parameters $a$ and $b$ define the magnitude of stochastic noise as a function of melt conditions. This formulation allows variability to increase during high melt periods, reflecting enhanced sensitivity to atmospheric forcing and surface processes. Parameter values are selected to ensure realistic variability without producing non-physical melt magnitudes.
+	
+	The jump probability $p$ and threshold temperature $T_c$ control the occurrence of episodic melt events. These parameters are chosen to represent rare but significant increases in melt during warm conditions, consistent with observed rapid snow depletion events.
+	
+	To provide quantitative insight into parameter influence, a targeted sensitivity experiment was conducted by systematically varying the persistence parameter ($\phi$) and jump probability ($p$) across representative ranges, while keeping all other parameters fixed. Specifically, $\phi$ was varied between 0.3 and 0.9 to assess changes in temporal persistence, and $p$ was varied between 0.05 and 0.3 to evaluate the frequency of temperature-triggered melt events. 
+	
+	For each parameter setting, the stochastic model was simulated over the full study period, and resulting melt time series were compared against the deterministic baseline. The resulting changes in melt dynamics are analyzed in the Results section, allowing assessment of how stochastic parameters influence variability, temporal structure, and extreme melt behavior. 
+	
+	All sensitivity experiments were performed using identical meteorological forcing and initial conditions, ensuring that observed differences arise solely from parameter variation.
+	
+	
 	\subsection{Runoff Estimation}
 	
 	Snowmelt is converted to runoff using a linear transformation:
@@ -246,6 +280,17 @@ The present study addresses this gap by extending the classical temperature-inde
 	\end{itemize}
 	
 	By embedding stochasticity directly within the melt formulation, the model captures intrinsic variability in snowmelt processes rather than relying solely on external uncertainty inputs. This provides a more realistic representation of melt dynamics in complex mountainous environments.
+	
+	\subsection{Validation Framework}
+	
+	Model outputs are evaluated against satellite-derived snow cover observations to assess their ability to reproduce real-world snow dynamics. Since the model simulates melt while MODIS provides snow cover fraction, a direct comparison is not possible. Instead, a normalized comparison framework is adopted.
+	
+	Modeled melt time series are normalized to the range [0,1] to represent relative melt intensity, while MODIS snow fraction is smoothed using a rolling mean to reduce noise and cloud-related variability. Since snow cover decreases as melt increases, an inverse relationship between MODIS snow fraction and modeled melt is expected. This physical linkage forms the basis for model validation.
+	
+	Model performance is quantified using Pearson correlation coefficient and root mean square error (RMSE). Correlation assesses the ability of the model to reproduce seasonal timing of snow depletion, while RMSE evaluates agreement in magnitude and variability.
+	
+	This validation framework enables a physically consistent comparison between modeled melt dynamics and observed snow cover evolution, linking temperature-driven melt processes with satellite-derived snow depletion patterns.
+	
 	% =========================
 \section{Results}
 
@@ -253,18 +298,20 @@ The proposed stochastic snowmelt framework is evaluated by comparing determinist
 
 \subsection{Temporal Dynamics of Snowmelt}
 
+
 Figure~\ref{fig:model_comparison} illustrates the temporal evolution of snowmelt simulated using the deterministic model, the AR(1)-based stochastic model, and the temperature-triggered jump model.
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.85\textwidth]{../outputs/figures/figure_model_comparison.png}
-	\caption{Comparison of deterministic and stochastic snowmelt models. The AR(1) model introduces temporal variability, while the temperature-triggered jump model captures intermittent high-magnitude melt events.}
-	\label{fig:model_comparison}
-\end{figure}
 
 The deterministic model produces smooth seasonal melt cycles driven solely by temperature variations. The AR(1) model introduces temporal persistence, resulting in realistic short-term fluctuations around the deterministic baseline. The temperature-triggered jump model further enhances variability by generating intermittent high-magnitude melt events during warm conditions.
 
 These results demonstrate that stochastic formulations capture both continuous variability and abrupt melt responses, which are not represented in traditional deterministic approaches.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.85\textwidth]{../outputs/figures/figure_model_comparison.png}
+	\caption{Temporal evolution of snowmelt for deterministic and stochastic models. The deterministic model produces smooth seasonal melt cycles, while the AR(1) model introduces persistent variability and the temperature-triggered jump model captures intermittent high-magnitude melt events.}
+	\label{fig:model_comparison}
+\end{figure}
 
 \subsection{Uncertainty in Snowmelt Estimates}
 
@@ -273,24 +320,22 @@ Uncertainty is quantified using Monte Carlo simulation, generating an ensemble o
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.85\textwidth]{../outputs/figures/figure_1_uncertainty.png}
-	\caption{Snowmelt with uncertainty band derived from Monte Carlo simulation. The shaded region represents the 10--90\% range, and the ensemble mean represents average stochastic behavior.}
+	\caption{Snowmelt uncertainty derived from Monte Carlo simulation. The shaded region represents the 10-90\% ensemble range, which widens significantly during active melt periods, indicating strong state-dependent variability. The ensemble mean closely follows the deterministic estimate.}
 	\label{fig:uncertainty}
 \end{figure}
 
 As shown in Figure~\ref{fig:uncertainty}, uncertainty is strongly state-dependent. During cold periods, melt remains close to zero with minimal variability. In contrast, during active melt periods, the uncertainty band widens significantly, reflecting increased sensitivity to stochastic perturbations.
 
-The ensemble mean closely follows the deterministic estimate while exhibiting enhanced variability, indicating that stochastic effects primarily influence variability and extremes rather than mean system behavior.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.75\textwidth]{../outputs/figures/figure_2_distribution.png}
+	\caption{Distribution of snowmelt values on a logarithmic density scale. The stochastic model exhibits a broader distribution with a pronounced heavy tail, indicating an increased likelihood of extreme melt events compared to the deterministic formulation.}
+	\label{fig:distribution}
+\end{figure}
 
 \subsection{Distribution of Snowmelt}
 
 The distribution of snowmelt values is presented in Figure~\ref{fig:distribution}, comparing deterministic and stochastic simulations on a logarithmic density scale.
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.75\textwidth]{../outputs/figures/figure_2_distribution.png}
-	\caption{Distribution of snowmelt values on a logarithmic density scale. The stochastic model exhibits a broader distribution with a pronounced heavy tail, indicating increased likelihood of extreme melt events.}
-	\label{fig:distribution}
-\end{figure}
 
 Both models exhibit high frequency near low melt values; however, the stochastic model produces a substantially broader distribution with a pronounced heavy tail. This indicates an increased probability of moderate and extreme melt events compared to the deterministic formulation.
 
@@ -320,74 +365,122 @@ Table~\ref{tab:stats} summarizes key statistical metrics for melt and runoff acr
 
 This highlights the importance of incorporating stochastic processes when assessing hydrological extremes, particularly in snow-dominated basins. The stochastic models exhibit substantially higher variability and extreme values compared to the deterministic model. In particular, the temperature-triggered jump model produces the largest maximum melt and runoff values, highlighting its ability to represent extreme melt events.
 
-Despite these differences, mean values remain relatively consistent across models, indicating that stochastic extensions primarily influence variability and extremes rather than average system behavior.
+\subsection{Parameter Sensitivity Analysis}
+
+Figure 5 presents the results of the sensitivity experiments described in Section 5.6. 
+
+A controlled sensitivity experiment was conducted to evaluate the influence of key stochastic parameters on model behavior. The persistence parameter ($\phi$) and jump probability ($p$) were varied across representative ranges while keeping other parameters constant. 
+
+Figure~\ref{fig:sensitivity} shows that increasing $\phi$ results in smoother melt time series with stronger temporal persistence, while lower values produce more rapidly fluctuating behavior. This reflects the role of $\phi$ in controlling memory within the stochastic process. Notably, higher $\phi$ values also lead to more sustained melt events during peak periods.
+
+Similarly, increasing the jump probability $p$ leads to more frequent high-magnitude melt events, significantly enhancing variability and extremes. Lower values of $p$ result in behavior closer to the deterministic baseline, while higher values produce frequent spikes that may exceed physically realistic melt rates.
+
+Importantly, variations in both parameters primarily affect short-term variability and extreme behavior, while the  seasonal structure of melt remains largely unchanged. This suggests that the stochastic framework preserves the dominant temperature-driven signal while providing flexibility to represent uncertainty and variability.
+
+These results indicate that model behavior is sensitive to parameter selection, but remains physically interpretable across a reasonable parameter range. This suggests that stochastic parameters primarily control higher-order statistics (variance and extremes) rather than first-order seasonal trends.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{../outputs/figures/figure_sensitivity.png}
+	\caption{Sensitivity of modeled snowmelt to key stochastic parameters. (a) Increasing persistence $\phi$ enhances temporal smoothness and memory in melt dynamics. (b) Increasing jump probability $p$ increases the frequency and magnitude of extreme melt events. The overall seasonal structure remains largely unchanged across parameter values.}
+	\label{fig:sensitivity}
+\end{figure}
 
 \subsection{Summary of Model Behavior}
 
-Overall, the results demonstrate that the proposed stochastic framework successfully extends the classical temperature-index model by capturing both variability and extreme melt behavior. The autoregressive component introduces realistic temporal persistence, while the jump process enables representation of episodic high-intensity melt events.
+Overall, the results demonstrate that the proposed stochastic framework effectively extends the classical temperature-index model by capturing both variability and extreme melt behavior. The autoregressive component introduces realistic temporal persistence, while the jump process enables representation of episodic high-intensity melt events.
 
 This combined approach provides a more comprehensive representation of snowmelt dynamics in complex mountainous environments.
+
+\subsection{Validation Against Satellite-Derived Snow Cover}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{../outputs/figures/figure_validation_panels_final.png}
+	\caption{Comparison between MODIS-derived basin-averaged snow fraction and normalized model melt outputs. The inverse relationship demonstrates consistency between modeled melt dynamics and observed snow depletion. Deterministic simulations capture seasonal trends, while stochastic models reproduce short-term variability.}
+	\label{fig:validation}
+\end{figure}
+
+To evaluate the ability of the proposed models to represent real-world snow dynamics, model outputs were compared against satellite-derived snow cover observations from the MODIS dataset. Basin-averaged snow fraction time series were extracted and compared with normalized melt estimates from deterministic and stochastic models.
+
+Figure~\ref{fig:validation} presents a direct comparison between MODIS-derived snow fraction and modeled melt dynamics across the study period. A clear inverse relationship is observed, with periods of decreasing snow cover corresponding to increased melt activity. This suggests that the model captures the fundamental physical linkage between temperature-driven melt and snow depletion.
+
+The deterministic model exhibits the strongest temporal agreement with observed snow cover evolution, closely reproducing the seasonal accumulation--ablation cycle. In contrast, the stochastic models introduce additional variability, resulting in short-term fluctuations that deviate from the smooth seasonal signal but better represent intermittent melt behavior.
+
+Quantitative evaluation supports these observations. The deterministic model shows the highest correlation with MODIS snow fraction ($r = -0.698$), indicating strong alignment with seasonal dynamics. The stochastic AR(1) and temperature-triggered jump models yield slightly lower correlations ($r = -0.662$ and $r = -0.633$, respectively), reflecting increased variability and reduced temporal smoothness.
+
+However, stochastic models demonstrate improved magnitude representation, with lower root mean square error (RMSE). The AR(1) and jump models produce RMSE values of $0.755$ and $0.757$, respectively, compared to $0.772$ for the deterministic model. This indicates that stochastic formulations better capture variability and intensity of melt, despite reduced agreement in timing.
+
+These results highlight a fundamental trade-off between temporal coherence and variability representation. Deterministic models are more effective in capturing large-scale seasonal patterns, whereas stochastic models better represent short-term variability and potential extreme melt behavior. This distinction is particularly relevant for applications involving hydrological risk assessment and uncertainty quantification.
+
+
 	% =========================
 	\section{Discussion}
 	
-	The results demonstrate that incorporating stochastic variability directly within the temperature-index snowmelt formulation significantly improves the representation of melt dynamics in a high-altitude Himalayan basin. Unlike deterministic models, which provide a single estimate of melt, the proposed framework captures both temporal variability and the occurrence of extreme melt events.
+	This study introduces a stochastic extension to the temperature-index snowmelt model, incorporating temporal persistence and state-dependent variability to better represent uncertainty in melt processes. The results demonstrate that while the deterministic formulation captures the dominant seasonal cycle, stochastic models provide additional insight into variability and extreme melt behavior.
 	
-	\subsection{Role of Stochastic Variability}
+	The deterministic model shows strong agreement with the seasonal evolution of snowmelt, reflecting its ability to represent large-scale temperature-driven processes. This is further supported by validation against MODIS snow cover, where the deterministic model achieves the highest correlation with observed snow depletion patterns ($r = -0.698$). This indicates that temperature alone is a strong predictor of basin-scale melt dynamics in the study region.
 	
-	The inclusion of an autoregressive stochastic component introduces temporal persistence in melt variability, reflecting the influence of antecedent conditions such as snowpack evolution and atmospheric forcing. This results in more realistic fluctuations in melt rates compared to the smooth behavior produced by deterministic models.
+	However, deterministic models inherently lack the ability to represent variability arising from sub-grid heterogeneity, energy balance fluctuations, and measurement uncertainty. The stochastic AR(1) formulation addresses this limitation by introducing temporal persistence, resulting in smoother variability and improved representation of short-term fluctuations. The temperature-triggered jump model further extends this framework by capturing episodic melt events, producing intermittent spikes that resemble rapid melt pulses observed during warm conditions.
 	
-	The state-dependent formulation further ensures that variability is physically consistent, with minimal stochastic influence during cold periods and increased variability during active melt conditions. This aligns with the understanding that snowmelt processes are highly sensitive to temperature variations near the melting threshold.
+	Despite slightly lower correlation with MODIS observations ($r = -0.662$ for AR(1) and $r = -0.633$ for the jump model), stochastic models achieve lower RMSE values compared to the deterministic approach. This suggests that while stochastic formulations may reduce alignment in timing, they better represent the magnitude and variability of melt. These findings highlight a fundamental trade-off between temporal coherence and variability representation.
 	
-	\subsection{Representation of Extreme Melt Events}
+	The uncertainty analysis further reinforces the value of stochastic modeling. Ensemble simulations reveal a wide spread in melt outcomes, particularly during peak melt periods, indicating that deterministic models may underestimate uncertainty in hydrological predictions. This has important implications for water resource management and risk assessment, where understanding variability is as critical as estimating mean behavior.
 	
-	The temperature-triggered jump process plays a key role in capturing intermittent high-magnitude melt events. These events are particularly important in mountainous regions, where short periods of elevated temperature can lead to rapid snowmelt and sharp increases in runoff.
+	Nevertheless, several limitations must be acknowledged. The basin-aggregated approach neglects spatial heterogeneity associated with elevation gradients, aspect, and localized energy fluxes, which are particularly important in high-mountain environments such as the Himalaya. Additionally, the runoff model used in this study is highly simplified, relying on a linear relationship between melt and discharge, and does not account for routing processes, storage, or glacier contributions.
+			
+	Additionally, uncertainties associated with satellite-derived snow cover, including cloud contamination and classification errors, may influence validation accuracy and should be considered when interpreting results.
 	
-	The results show that the jump component significantly increases the upper tail of the melt and runoff distributions, indicating a higher probability of extreme events. Such behavior cannot be represented within traditional deterministic or purely autoregressive frameworks.
 	
-	\subsection{Implications for Hydrological Modeling}
+	This highlights the importance of moving beyond deterministic representations in snow hydrology, particularly for applications involving extremes, risk assessment, and climate variability.
 	
-	The proposed framework provides a transition from deterministic prediction to probabilistic characterization of snowmelt and runoff. This is particularly relevant for hydrological applications involving risk assessment, flood forecasting, and water resource management in snow-dominated basins.
-	
-	By generating an ensemble of possible outcomes, the model allows for estimation of uncertainty ranges and extreme quantiles, which are critical for decision-making under uncertainty. The ability to represent both mean behavior and variability makes the approach suitable for integration into broader hydrological modeling systems.
-	
-	\subsection{Model Limitations}
-	
-	Despite its advantages, the model has several limitations. The use of a temperature-index formulation does not explicitly account for energy balance components such as radiation, wind, and humidity, which can influence melt processes.
-	
-	Additionally, the basin is represented at an aggregated scale, which does not capture spatial heterogeneity in elevation, aspect, and snow distribution. This simplification may limit the ability of the model to represent localized melt dynamics.
-	
-	The stochastic components are parameterized using simplified assumptions, and their calibration remains an area for further investigation. In particular, the selection of parameters governing persistence, variability, and jump behavior can influence model outcomes.
-	
-	Additionally, the absence of direct observational validation (e.g., satellite-derived snow cover or in-situ measurements) limits the ability to quantitatively assess model accuracy, and future work should address this through integration of observational datasets.
-	
-\section{Future Work}
-
-While the present study focuses on the development and evaluation of a stochastic snowmelt modeling framework, several extensions can further enhance its applicability and physical realism.
-
-A key direction for future work is the integration of satellite-based snow cover observations, such as Moderate Resolution Imaging Spectroradiometer (MODIS) products. Incorporating snow cover data would enable direct validation of modeled melt dynamics through comparison with observed snow depletion patterns. This would provide an important link between modeled processes and real-world observations, strengthening confidence in the stochastic framework.
-
-Future studies can also extend the model to a spatially distributed framework, allowing explicit representation of elevation-dependent processes, aspect variability, and heterogeneous snow distribution. Such an approach would improve the ability to capture localized melt dynamics in complex mountainous terrain.
-
-In addition, coupling the stochastic snowmelt model with hydrological routing models would enable simulation of streamflow response, facilitating applications in flood forecasting and water resource management.
-
-The probabilistic nature of the proposed framework makes it particularly suitable for climate change impact studies. As temperature variability and extreme events are expected to increase under future climate scenarios, the ability to quantify uncertainty and extremes becomes increasingly important.
-
-Overall, these extensions would transform the present framework from a basin-scale conceptual model into a comprehensive tool for probabilistic hydrological analysis in snow-dominated regions.
-	
-	% =========================
 \section{Conclusion}
 
-This study presents a stochastic extension of the classical temperature-index snowmelt model for probabilistic estimation of melt and runoff in a high-altitude Himalayan basin. By integrating deterministic modeling with state-dependent stochastic variability, the proposed framework enables representation of both average behavior and uncertainty in snowmelt processes.
+This study develops a stochastic framework for snowmelt modeling by extending the traditional temperature-index approach to include temporal persistence and state-dependent variability. The proposed models generate probabilistic melt estimates, enabling representation of uncertainty and variability that are not captured by deterministic formulations.
 
-The results demonstrate that deterministic models, while effective in capturing general seasonal trends, are limited in their ability to represent variability and extreme events. The inclusion of autoregressive persistence and temperature-triggered jump processes allows the model to capture temporal variability and intermittent high-magnitude melt events that are commonly observed in mountainous environments.
+Results indicate that the deterministic model effectively reproduces the seasonal structure of snowmelt, as confirmed by strong agreement with MODIS-derived snow cover observations. However, stochastic models provide improved representation of variability and melt intensity, as reflected in lower RMSE values and enhanced depiction of intermittent melt events.
 
-The stochastic formulation preserves the simplicity and computational efficiency of the temperature-index approach while significantly enhancing its ability to represent real-world system behavior. Importantly, the model produces probabilistic outputs in the form of ensembles, enabling estimation of uncertainty ranges and extreme quantiles, which are critical for hydrological risk assessment.
+The inclusion of stochastic processes allows the model to generate a distribution of possible melt outcomes, offering a more realistic characterization of uncertainty in snow-dominated hydrological systems. This is particularly relevant for applications involving risk assessment, forecasting, and climate sensitivity analysis.
 
-The findings highlight the importance of explicitly representing intrinsic variability in snowmelt-driven systems, particularly in regions where small changes in temperature can lead to significant hydrological responses. The proposed framework provides a conceptual bridge between traditional deterministic snowmelt modeling and probabilistic hydrological analysis.
+Validation against satellite observations suggests that the model captures the fundamental relationship between temperature-driven melt and snow depletion. While deterministic models remain effective for representing large-scale seasonal behavior, stochastic extensions provide additional value by incorporating variability and uncertainty.
 
-While the current study adopts a basin-aggregated approach, the methodology can be extended to incorporate spatial variability, more physically based melt formulations, and advanced hydrological routing schemes. The framework is also well-suited for applications in climate change impact assessment, where understanding variability and extremes is essential.
+Overall, this study demonstrates that stochastic extensions of temperature-index models provide a meaningful advancement toward probabilistic hydrological modeling. By preserving simplicity while enhancing representation of variability and extremes, the proposed framework offers a practical pathway for improving snowmelt simulations in data-scarce mountainous environments. This approach is particularly relevant for applications involving hydrological risk, climate variability, and water resource planning under uncertainty.
+	
+	% =========================
+\section{Future Work}
 
-Overall, this work contributes toward advancing snowmelt modeling from deterministic prediction to probabilistic understanding, providing a foundation for improved analysis of variability, uncertainty, and extreme events in cryospheric hydrology. This framework provides a scalable foundation for probabilistic cryospheric modeling, enabling improved risk-aware water resource management in data-scarce mountain regions.
+Several avenues exist for extending and improving the proposed modeling framework. A key priority is the incorporation of spatial heterogeneity through elevation-dependent modeling. Introducing temperature lapse rates and elevation band discretization would enable more realistic representation of snow accumulation and melt processes across complex terrain.
+
+Integration of additional observational datasets offers significant potential for model improvement. In particular, MODIS snow cover data can be further utilized for quantitative calibration and data assimilation, rather than serving solely as a validation dataset. This would allow dynamic adjustment of model parameters based on observed snow conditions.
+
+Future work should also focus on enhancing the runoff component of the model. Replacing the current linear runoff formulation with a physically based hydrological routing scheme would improve representation of streamflow dynamics, including storage, delay, and glacier contributions.
+
+Parameter estimation remains another important area for development. Systematic calibration and sensitivity analysis of stochastic parameters, including persistence, variability scaling, and jump characteristics, would improve model robustness and interpretability. A key next step is formal calibration of stochastic parameters using observational constraints, enabling objective estimation of persistence and jump characteristics.
+
+Finally, coupling the stochastic snowmelt framework with climate projections and high-resolution atmospheric models such as WRF would enable assessment of future changes in snow dynamics under different climate scenarios. This would provide valuable insights for water resource management and climate adaptation in snow-dominated regions.
+
+These extensions would further strengthen the framework and enhance its applicability to both scientific research and operational hydrological modeling.
+
+\section*{Data Availability}
+
+All datasets used in this study are publicly available and reproducible. ERA5 reanalysis data were obtained from the European Centre for Medium-Range Weather Forecasts (ECMWF) Climate Data Store. The Shuttle Radar Topography Mission (SRTM) digital elevation model is publicly accessible through NASA data repositories.
+
+All processed datasets, model outputs, and analysis scripts used in this study are available in a public GitHub repository:
+
+\begin{center}
+	\texttt{https://github.com/avinashparla/snowmelt-stochastic-model}
+\end{center}
+
+The repository includes:
+\begin{itemize}
+	\item Preprocessed basin-averaged temperature time series
+	\item Deterministic and stochastic model outputs
+	\item Monte Carlo simulation ensemble data
+	\item Scripts for data processing, modeling, and figure generation
+\end{itemize}
+
+The code is provided to ensure full reproducibility of the results presented in this study.
+
 	
 	% =========================
 	\bibliographystyle{plainnat}
